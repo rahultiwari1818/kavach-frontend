@@ -1,37 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+README
+======
 
-## Getting Started
+Kavach Frontend (Next.js + TypeScript)
+======================================
 
-First, run the development server:
+Overview
+--------
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The frontend of the Kavach Crime Reporting and Hotspot Mapping System is built using Next.js and TypeScript. It provides an interactive user interface for citizens, admins, and super admins. The application includes:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+*   Crime reporting interface
+    
+*   Admin crime verification dashboard
+    
+*   Super admin management panel
+    
+*   Interactive map system powered by Leaflet and OpenStreetMap
+    
+*   Real-time media preview and radius-based crime filtering
+    
+*   Debounced API requests for optimized performance
+    
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Tech Stack
+----------
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+*   Next.js 14 (TypeScript)
+    
+*   React 18
+    
+*   Tailwind CSS
+    
+*   Leaflet + React-Leaflet
+    
+*   Axios
+    
+*   Material UI (sliders, UI controls)
+    
+*   React Toastify
+    
+*   Cloudinary (media loading)
+    
 
-## Learn More
+Features
+--------
 
-To learn more about Next.js, take a look at the following resources:
+*   Register, login, and role-based access control
+    
+*   Report crimes with media uploads (images/videos)
+    
+*   Real-time map visualization
+    
+*   Radius-based crime search (100m to 50km)
+    
+*   Type and time-based filtering
+    
+*   Popup dialogs for crime details and verification
+    
+*   Optimized API calls with custom debounce adapter
+    
+*   View heatmap and dynamic risk zones
+    
+*   State pattern for crime verification transitions
+    
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Folder Structure
+----------------
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   frontend/  │  ├── src/  │   ├── app/                     # Next.js app router pages  │   ├── components/              # Dialogs, Map, Overlays, UI elements  │   ├── Types/                   # TypeScript interfaces  │   ├── utils/                   # Debounce, helper functions  │   ├── hooks/                   # Custom hooks  │   └── styles/                  # Global CSS  │  ├── public/                      # Static assets and icons  ├── package.json  └── .env.local   `
 
-## Deploy on Vercel
+Environment Variables
+---------------------
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create a .env.local file:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-"# kavach-frontend" 
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   NEXT_PUBLIC_API_URL=http://localhost:8080  NEXT_PUBLIC_CLOUDINARY_BASE=https://res.cloudinary.com/   `
+
+Installation
+------------
+
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   cd frontend  npm install   `
+
+Running the Development Server
+------------------------------
+
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   npm run dev   `
+
+The frontend will run on:
+
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   http://localhost:3000   `
+
+Build for Production
+--------------------
+
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   npm run build  npm start   `
+
+API Communication
+-----------------
+
+All API requests are made using Axios and include withCredentials: true to support secure cookie-based authentication.
+
+Map Integration
+---------------
+
+Powered by:
+
+*   Leaflet library
+    
+*   Custom risk zone circle layers
+    
+*   Popup content components
+    
+*   Optimized marker rendering
+    
+
+Troubleshooting
+---------------
+
+1.  If icons do not load, ensure the Leaflet CSS is correctly included.
+    
+2.  If cookies are not set, verify backend CORS config.
+    
+3.  If map centers incorrectly, ensure browser permissions for location are allowed.
+
