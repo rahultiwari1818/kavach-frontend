@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ToastProvider from "@/src/context/ToastProvider";
+import NavbarWrapper from "@/src/components/Navbar/NavbarWrapper";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import 'leaflet/dist/leaflet.css';
 
 
 const geistSans = Geist({
@@ -28,7 +32,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-
+        <ToastProvider>
+          <GoogleOAuthProvider
+            clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
+          >
+            <NavbarWrapper />
+            {children}
+          </GoogleOAuthProvider>
+        </ToastProvider>
       </body>
     </html>
   );
