@@ -6,6 +6,9 @@ const CrimeMap = dynamic(() => import("@/components/CrimeMap/CrimeMap"), {
   ssr: false,
 });
 
+
+
+
 export default function CrimeNearbyPage() {
   return (
     <div>

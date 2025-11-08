@@ -47,6 +47,8 @@ const CRIME_TYPES = [
   "other",
 ];
 
+
+
 const TIME_OPTIONS = [
   { value: "24h", label: "Last 24 Hours" },
   { value: "7d", label: "Last 7 Days" },
@@ -58,7 +60,6 @@ const TIME_OPTIONS = [
   { value: "All", label: "All Time" },
 ];
 
-// { role }: { role?: string }
 export default function CrimeMap() {
   const [userLocation, setUserLocation] = useState<[number, number] | null>(
     null
@@ -210,7 +211,6 @@ export default function CrimeMap() {
         </div>
       </div>
 
-      {/* Map Section */}
       <div className="w-full mt-6">
         {loading ? (
           <Overlay open={loading} />
