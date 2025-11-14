@@ -1,125 +1,95 @@
-README
-======
+# 🛡️ Kavach Frontend: Crime Reporting & Hotspot Mapping
 
-Kavach Frontend (Next.js + TypeScript)
-======================================
+## Overview
 
-Overview
---------
+The **Kavach Frontend** is the interactive user interface for the Kavach Crime Reporting and Hotspot Mapping System. It's a modern, high-performance application built with Next.js and TypeScript, designed to serve citizens, administrators, and super administrators with role-specific access.
 
-The frontend of the Kavach Crime Reporting and Hotspot Mapping System is built using Next.js and TypeScript. It provides an interactive user interface for citizens, admins, and super admins. The application includes:
+### Key Capabilities
 
-*   Crime reporting interface
-    
-*   Admin crime verification dashboard
-    
-*   Super admin management panel
-    
-*   Interactive map system powered by Leaflet and OpenStreetMap
-    
-*   Real-time media preview and radius-based crime filtering
-    
-*   Debounced API requests for optimized performance
-    
+* **Crime Reporting Interface:** Simple and fast reporting for citizens, including media uploads.
+* **Admin Dashboard:** Crime verification and management for administrators.
+* **Super Admin Panel:** Comprehensive user and system management.
+* **Interactive Map System:** Real-time visualization of crime data using **Leaflet** and **OpenStreetMap**.
+* **Optimized Performance:** Uses debounced API requests and optimized marker rendering.
 
-Tech Stack
-----------
+---
 
-*   Next.js 14 (TypeScript)
-    
-*   React 18
-    
-*   Tailwind CSS
-    
-*   Leaflet + React-Leaflet
-    
-*   Axios
-    
-*   Material UI (sliders, UI controls)
-    
-*   React Toastify
-    
-*   Cloudinary (media loading)
-    
+## 🛠️ Tech Stack
 
-Features
---------
+| Category | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Framework** | Next.js 14 (TypeScript) | Full-stack React framework for performance and routing. |
+| **UI/Styling** | React 18, Tailwind CSS | Component library and utility-first CSS for responsive design. |
+| **Map** | Leaflet + React-Leaflet | Map rendering and interaction. |
+| **API Client** | Axios | HTTP client for efficient API communication. |
+| **UI Components** | Material UI | Sliders and structured UI controls. |
+| **Notifications** | React Toastify | User feedback and notifications. |
+| **Media** | Cloudinary | External service for media loading and display. |
 
-*   Register, login, and role-based access control
-    
-*   Report crimes with media uploads (images/videos)
-    
-*   Real-time map visualization
-    
-*   Radius-based crime search (100m to 50km)
-    
-*   Type and time-based filtering
-    
-*   Popup dialogs for crime details and verification
-    
-*   Optimized API calls with custom debounce adapter
-    
-*   View heatmap and dynamic risk zones
-    
-*   State pattern for crime verification transitions
-    
+---
 
-Folder Structure
-----------------
+## ✨ Features
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   frontend/  │  ├── src/  │   ├── app/                     # Next.js app router pages  │   ├── components/              # Dialogs, Map, Overlays, UI elements  │   ├── Types/                   # TypeScript interfaces  │   ├── utils/                   # Debounce, helper functions  │   ├── hooks/                   # Custom hooks  │   └── styles/                  # Global CSS  │  ├── public/                      # Static assets and icons  ├── package.json  └── .env.local   `
+* **Authentication & Access:** Register, login, and **role-based access control** for citizens, admins, and super admins.
+* **Geolocation & Search:** **Radius-based crime search** (100m to 50km) and location-based reporting.
+* **Filtering:** Advanced filtering by crime **type** and **time/date**.
+* **Data Visualization:**
+    * **Real-time map visualization** of reported crimes.
+    * View **heatmap** and **dynamic risk zones**.
+* **Verification Workflow:** Uses a **State pattern** for secure and managed crime verification transitions (e.g., Pending $\rightarrow$ Verified).
+* **Optimized API Calls:** Custom **debounce adapter** for Axios to prevent excessive API requests.
+* **Detailed Views:** **Popup dialogs** for viewing crime details and performing admin verification.
 
-Environment Variables
----------------------
+# Environment variables
 
-Create a .env.local file:
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   NEXT_PUBLIC_API_URL=http://localhost:8080  NEXT_PUBLIC_CLOUDINARY_BASE=https://res.cloudinary.com/   `
+---
 
-Installation
-------------
+## ⚙️ Installation & Setup
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   cd frontend  npm install   `
+### Environment Variables
 
-Running the Development Server
-------------------------------
+Create a file named `.env.local` in the `frontend/` directory and add the following variables:
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   npm run dev   `
+NEXT_PUBLIC_API_URL=http://localhost:8080 NEXT_PUBLIC_CLOUDINARY_BASE=https://res.cloudinary.com/
 
-The frontend will run on:
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   http://localhost:3000   `
+### Installation Steps
 
-Build for Production
---------------------
+1.  Navigate into the frontend directory:
+    ```bash
+    cd frontend
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   npm run build  npm start   `
+### Running the Development Server
 
-API Communication
------------------
+To start the application in development mode:
 
-All API requests are made using Axios and include withCredentials: true to support secure cookie-based authentication.
+```bash
+npm run dev
+The frontend will be accessible at: http://localhost:3000
 
-Map Integration
----------------
+## 📡 API & Map Details
 
-Powered by:
+### API Communication
 
-*   Leaflet library
-    
-*   Custom risk zone circle layers
-    
-*   Popup content components
-    
-*   Optimized marker rendering
-    
+All API requests are handled by **Axios**. Crucially, they include `withCredentials: true` to ensure secure **cookie-based authentication** and session management with the backend.
 
-Troubleshooting
----------------
+### Map Integration
 
-1.  If icons do not load, ensure the Leaflet CSS is correctly included.
-    
-2.  If cookies are not set, verify backend CORS config.
-    
-3.  If map centers incorrectly, ensure browser permissions for location are allowed.
+The interactive map is powered by the **Leaflet library** integrated via `react-leaflet`. It uses:
 
+* Custom markers and popup components for crime data.
+* Specialized circle layers for rendering risk zones.
+
+---
+
+## ⚠️ Troubleshooting
+
+1.  **Map Icons Missing:** Ensure the Leaflet CSS file is correctly imported in your global styles or main layout file.
+2.  **Authentication Failure (Cookies):** Verify that the backend's CORS configuration (including `Access-Control-Allow-Credentials`) is correctly set up to allow cookies from the frontend origin (`http://localhost:3000`).
+3.  **Incorrect Map Center:** Check that your browser permissions allow the application to access your geolocation if the map relies on the user's current location.
