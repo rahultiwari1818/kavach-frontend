@@ -12,8 +12,8 @@ export function middleware(request: NextRequest) {
   console.log(role," Role Middleware");
   // console.log(token," TOken Middleware");
 
-  const userProtectedRoutes = ['/public/home','/profile','/public/crime-report','/public/my-reported-crimes'];
-  const adminProtectedRoutes = [ '/admin/home', '/admin/users','/profile','/admin/verified-crimes'];
+  const userProtectedRoutes = ['/public/home','/public/profile','/public/crime-report','/public/my-reported-crimes'];
+  const adminProtectedRoutes = [ '/admin/home', '/admin/users','/admin/profile','/admin/verified-crimes'];
   const superAdminProtectedRoutes = ['/super-admin/home','/super-admin/manage-users','/super-admin/manage-admins','s/uper-admin/audit-log'];
 
   // const commonRoutes = ['/profile'];

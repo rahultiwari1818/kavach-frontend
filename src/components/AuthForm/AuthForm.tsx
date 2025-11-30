@@ -2,13 +2,13 @@
 
 import { useCallback, useState } from "react";
 import axios, { AxiosError } from "axios";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import "./authform.css";
 import { useGoogleLogin } from "@react-oauth/google";
 import Image from "next/image";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import ForgotPasswordDialog from "../ForgotPasswordDialog/ForgotPasswordDialog";
 import Overlay from "../Overlay/Overlay";
 
@@ -30,7 +30,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const router = useRouter();
+  // const router = useRouter();
 
   const openForgotPasswordDialog = () => {
     setIsOpenForgotPasswordDialog(true);
@@ -67,7 +67,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
 
       try {
         setIsLoading(true);
-        await axios.post(
+        const data = await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/register`,
           { name, email, password, otp },
           { withCredentials: true }
@@ -75,7 +75,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
 
         setIsLoading(false);
         toast.success("Registration successful!");
-        const role = Cookies.get("role");
+        const role = data.data.role;
         if (role === "admin") {
           window.location.href = "/admin/home";
         } else if (role === "super-admin") {
@@ -92,16 +92,20 @@ export default function AuthForm({ mode }: AuthFormProps) {
     } else {
       try {
         setIsLoading(true);
-        await axios.post(
+        const data = await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/login`,
           { email, password },
           { withCredentials: true }
         );
-        const role = Cookies.get("role");
+        const role = data.data.role;
+        // console.log(role);
+        // debugger;
         if (role === "admin") {
-          router.push("/admin/home");
+          window.location.href = "/admin/home";
+        } else if (role === "super-admin") {
+          window.location.href = "/super-admin/home";
         } else {
-          router.push("/public/home");
+          window.location.href = "/public/home";
         }
       } catch (err) {
         const error = err as AxiosError<{ message: string }>;
@@ -123,12 +127,16 @@ export default function AuthForm({ mode }: AuthFormProps) {
     try {
       if ("code" in authResult) {
         const code = (authResult as { code: string }).code;
-        await googleAuth(code);
-        const role = Cookies.get("role");
+        const data = await googleAuth(code);
+        const role = data.data.role;
+        // console.log(role);
+        // debugger;
         if (role === "admin") {
-          router.push("/admin/home");
+          window.location.href = "/admin/home";
+        } else if (role === "super-admin") {
+          window.location.href = "/super-admin/home";
         } else {
-          router.push("/public/home");
+          window.location.href = "/public/home";
         }
       }
     } catch (error) {
