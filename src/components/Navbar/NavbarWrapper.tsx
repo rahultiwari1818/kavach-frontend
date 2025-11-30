@@ -5,7 +5,7 @@ export default async function NavbarWrapper() {
   const cookieStore = await cookies()
   if(cookieStore){
     const role = cookieStore.get("role")?.value;
-  
+    console.log(role,"role")
     return <Navbar role={role} />;
 
   }
