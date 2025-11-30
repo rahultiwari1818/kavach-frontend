@@ -9,6 +9,8 @@ export function middleware(request: NextRequest) {
   const publicRoutes = ['/', '/login', '/register'];
   const isPublic = publicRoutes.includes(pathname);
 
+  console.log(role," Role Middleware");
+
   const userProtectedRoutes = ['/public/home','/profile','/public/crime-report','/public/my-reported-crimes'];
   const adminProtectedRoutes = [ '/admin/home', '/admin/users','/profile','/admin/verified-crimes'];
   const superAdminProtectedRoutes = ['/super-admin/home','/super-admin/manage-users','/super-admin/manage-admins','super-admin/audit-log'];
