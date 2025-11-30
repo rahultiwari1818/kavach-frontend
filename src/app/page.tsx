@@ -1,4 +1,6 @@
-import Login from "@/src/components/Login/Login";
+"use client";
+
+import Login from "@/components/Login/Login";
 
 export default function Home(){
   return(

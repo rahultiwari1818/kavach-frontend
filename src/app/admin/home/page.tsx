@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import axios, { AxiosError } from "axios";
-import dynamic from "next/dynamic";
 import { toast } from "react-toastify";
 import { Icon } from "leaflet";
 import GeneratePopUpContent from "@/components/Map/GeneratePopUpContent";
@@ -10,8 +9,7 @@ import { Crime } from "@/Types/crime";
 import Overlay from "@/components/Overlay/Overlay";
 import { Slider } from "@mui/material";
 import { debounce } from "@/utils/generalUtils"; // ✅ import your debounce function
-
-const MapView = dynamic(() => import("@/components/Map/Map"), { ssr: false });
+import MapView from "@/components/Map/Map";
 
 const userIcon = new Icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",

@@ -1,3 +1,5 @@
+"use client";
+
 import { LatLngExpression, Icon } from "leaflet";
 import { JSX } from "react";
 

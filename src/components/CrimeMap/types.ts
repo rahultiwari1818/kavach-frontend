@@ -1,5 +1,4 @@
 import { LatLngExpression, Icon } from "leaflet"
-import dynamic from "next/dynamic"
 import { ReactNode } from "react"
 
 export interface MapMarker {
@@ -42,6 +41,4 @@ export interface MapProps {
 //   verificationStatus:string;
 //   verificationRemarks?:string;
 // };
-
-export const MarkerClusterGroup = dynamic(() => import("react-leaflet-markercluster"), { ssr: false });
 

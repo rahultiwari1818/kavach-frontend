@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { useEffect, useState } from "react";
@@ -106,4 +105,4 @@ function MapComponent({
   );
 }
 
-export default dynamic(() => Promise.resolve(MapComponent), { ssr: false });
+export default MapComponent;

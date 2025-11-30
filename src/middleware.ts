@@ -9,8 +9,8 @@ export function middleware(request: NextRequest) {
   const publicRoutes = ['/', '/login', '/register'];
   const isPublic = publicRoutes.includes(pathname);
 
-  const userProtectedRoutes = ['/public/home','/profile'];
-  const adminProtectedRoutes = [ '/admin/home', '/admin/users','/profile'];
+  const userProtectedRoutes = ['/public/home','/profile','/public/crime-report','/public/my-reported-crimes'];
+  const adminProtectedRoutes = [ '/admin/home', '/admin/users','/profile','/admin/verified-crimes','/super-admin/home','/super-admin/manage-users','/super-admin/manage-admins'];
 
 
   // const commonRoutes = ['/profile'];
@@ -27,18 +27,22 @@ export function middleware(request: NextRequest) {
   if (isPublic && token) {
     if (role === 'admin') {
       return NextResponse.redirect(new URL('/admin/home', request.url));
-    } else {
+    }
+    else if(role === 'super-admin'){
+            return NextResponse.redirect(new URL('/super-admin/home', request.url));
+    }
+    else {
       return NextResponse.redirect(new URL('/public/home', request.url));
     }
   }
 
-  // 🚫 Admin trying to access user area — block
+  //  Admin trying to access user area — block
   if (isUserRoute && role === 'admin') {
     return NextResponse.redirect(new URL('/admin/home', request.url));
   }
 
 
-  // 🚫 User trying to access admin area — block
+  //  User trying to access admin area — block
   if (isAdminRoute && role === 'public') {
     return NextResponse.redirect(new URL('/public/home', request.url));
   }

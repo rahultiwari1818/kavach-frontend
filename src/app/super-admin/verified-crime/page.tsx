@@ -2,15 +2,12 @@
 
 import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
-import dynamic from "next/dynamic";
 import { toast } from "react-toastify";
 import { Icon } from "leaflet";
 import GeneratePopUpContent from "@/components/Map/GeneratePopUpContent";
 import { Crime } from "@/Types/crime";
-import Overlay from "@/components/Overlay/Overlay";
 
-const MapView = dynamic(() => import("@/components/Map/Map"), { ssr: false });
-
+import MapView from "@/components/Map/Map";
 
 
 const userIcon = new Icon({
@@ -164,7 +161,7 @@ export default function AdminCrimesPage() {
 
       {/* 🗺️ Map */}
       {loading ? (
-        <Overlay open={loading}/>
+        <p>Loading...</p>
       ) : (
         <MapView
           markers={crimes.map((crime) => ({

@@ -6,9 +6,6 @@ import { toast } from "react-toastify";
 import { Crime } from "@/Types/crime";
 import CrimeDetailsDialog from "@/components/CrimeDetailsDialog/CrimeDetailsDialog"; // Assuming this file path
 
-
-
-
 export default function MyReportedCrimesPage() {
   const [crimes, setCrimes] = useState<Crime[]>([]);
   const [loading, setLoading] = useState(true);
@@ -35,13 +32,13 @@ export default function MyReportedCrimesPage() {
   }, []);
 
   const handleOpenDialog = (crime: Crime) => {
-    setSelectedCrime(crime);  
-    setDialogOpen(true);      
+    setSelectedCrime(crime);  // Set selected crime
+    setDialogOpen(true);      // Open the dialog
   };
 
   const handleCloseDialog = () => {
-    setDialogOpen(false);  
-    setSelectedCrime(null); 
+    setDialogOpen(false);  // Close the dialog
+    setSelectedCrime(null); // Reset selected crime
   };
 
   if (loading)
