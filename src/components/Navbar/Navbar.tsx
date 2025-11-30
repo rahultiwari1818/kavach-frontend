@@ -13,6 +13,8 @@ export default function Navbar({ role }: { role: string | undefined }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log(role," ROle FE")
+
   const logoutHandler = async () => {
     try {
       setIsLoading(true);
