@@ -77,11 +77,11 @@ export default function AuthForm({ mode }: AuthFormProps) {
         toast.success("Registration successful!");
         const role = Cookies.get("role");
         if (role === "admin") {
-          router.push("/admin/home");
+          window.location.href = "/admin/home";
         } else if (role === "super-admin") {
-          router.push("/super-admin/home");
+          window.location.href = "/super-admin/home";
         } else {
-          router.push("/public/home");
+          window.location.href = "/public/home";
         }
       } catch (err) {
         const error = err as AxiosError<{ message: string }>;

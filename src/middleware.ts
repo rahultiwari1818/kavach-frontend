@@ -10,10 +10,11 @@ export function middleware(request: NextRequest) {
   const isPublic = publicRoutes.includes(pathname);
 
   console.log(role," Role Middleware");
+  console.log(token," TOken Middleware");
 
   const userProtectedRoutes = ['/public/home','/profile','/public/crime-report','/public/my-reported-crimes'];
   const adminProtectedRoutes = [ '/admin/home', '/admin/users','/profile','/admin/verified-crimes'];
-  const superAdminProtectedRoutes = ['/super-admin/home','/super-admin/manage-users','/super-admin/manage-admins','super-admin/audit-log'];
+  const superAdminProtectedRoutes = ['/super-admin/home','/super-admin/manage-users','/super-admin/manage-admins','s/uper-admin/audit-log'];
 
   // const commonRoutes = ['/profile'];
 
@@ -23,7 +24,7 @@ export function middleware(request: NextRequest) {
 
   // 🔐 Not logged in but trying to access protected area
   if ((isUserRoute || isAdminRoute || isSuperAdminRoute) && !token) {
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(new URL('/', request.url));
   }
 
   // 🔁 Already logged in but accessing login/register — redirect to role-specific home
