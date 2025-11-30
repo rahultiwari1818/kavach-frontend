@@ -3,17 +3,15 @@
 import axios, { AxiosError } from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import Overlay from "../Overlay/Overlay";
 
 export default function Navbar({ role }: { role: string | undefined }) {
-  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(role," ROle FE")
+  // console.log(role," ROle FE")
 
   const logoutHandler = async () => {
     try {
@@ -24,7 +22,7 @@ export default function Navbar({ role }: { role: string | undefined }) {
         {},
         { withCredentials: true }
       );
-      router.push("/");
+      window.location.href = "/";
     } catch (err) {
       const error = err as AxiosError<{ message: string }>;
       if (error.response) toast.error(error.response.data.message);
