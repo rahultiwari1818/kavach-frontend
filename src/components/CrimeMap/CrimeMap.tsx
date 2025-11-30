@@ -2,26 +2,22 @@
 
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
-import { Icon } from "leaflet";
 import Slider from "@mui/material/Slider";
 import { MapMarker } from "@/components/Map/types";
-import CustomMap from "@/components/Map/Map";
 import GeneratePopUpContent from "../Map/GeneratePopUpContent";
 import { debounce } from "@/utils/generalUtils";
 import { Crime } from "@/Types/crime";
 import Overlay from "../Overlay/Overlay";
 
-const userIcon = new Icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
+import { userIcon } from "@/components/Map/Map";
+import {crimeIcon} from "@/components/Map/Map";
 
-const crimeIcon = new Icon({
-  iconUrl: "/red-marker.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
+import dynamic from "next/dynamic";
+
+const CustomMap = dynamic(() => import("@/components/Map/Map"), {
+  ssr: false,
+}); 
+
 
 const CRIME_TYPES = [
   "All",
@@ -70,6 +66,11 @@ export default function CrimeMap() {
   const [zoom, setZoom] = useState(15);
   const [selectedType, setSelectedType] = useState("All");
   const [selectedTime, setSelectedTime] = useState("7d");
+  const [mounted,setMounted] = useState(false);
+
+  useEffect(()=>{
+    setMounted(true);
+  },[])
 
   useEffect(() => {
     const newZoom = Math.max(8, 20 - Math.log10(radius));
@@ -146,8 +147,9 @@ export default function CrimeMap() {
   }, [radius, selectedType, selectedTime]);
 
   // if (loading || !userLocation) return <div>Loading map...</div>;
-
+  if(!mounted) return <></>;
   return (
+
     <div className="w-full flex flex-col items-center">
       {/* Filter Panel */}
       <div className="w-full  mt-6 bg-white/70 backdrop-blur-md rounded-xl shadow-md px-6 py-2">

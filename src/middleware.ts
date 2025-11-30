@@ -10,16 +10,17 @@ export function middleware(request: NextRequest) {
   const isPublic = publicRoutes.includes(pathname);
 
   const userProtectedRoutes = ['/public/home','/profile','/public/crime-report','/public/my-reported-crimes'];
-  const adminProtectedRoutes = [ '/admin/home', '/admin/users','/profile','/admin/verified-crimes','/super-admin/home','/super-admin/manage-users','/super-admin/manage-admins'];
-
+  const adminProtectedRoutes = [ '/admin/home', '/admin/users','/profile','/admin/verified-crimes'];
+  const superAdminProtectedRoutes = ['/super-admin/home','/super-admin/manage-users','/super-admin/manage-admins','super-admin/audit-log'];
 
   // const commonRoutes = ['/profile'];
 
   const isUserRoute = userProtectedRoutes.some(path => pathname.startsWith(path));
   const isAdminRoute = adminProtectedRoutes.some(path => pathname.startsWith(path));
+  const isSuperAdminRoute = superAdminProtectedRoutes.some(path => pathname.startsWith(path));
 
   // 🔐 Not logged in but trying to access protected area
-  if ((isUserRoute || isAdminRoute) && !token) {
+  if ((isUserRoute || isAdminRoute || isSuperAdminRoute) && !token) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
@@ -47,6 +48,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/public/home', request.url));
   }
 
+  if(isSuperAdminRoute && role !== 'super-admin'){
+      return NextResponse.redirect(new URL('/admin/home', request.url));
+    } 
   return NextResponse.next();
 }
 
@@ -54,6 +58,6 @@ export const config = {
   matcher: [
     '/', '/login', '/register',
     '/home', '/profile', '/settings',
-    '/admin/:path*'
+    '/admin/:path*','/super-admin/:path*'
   ],
 };

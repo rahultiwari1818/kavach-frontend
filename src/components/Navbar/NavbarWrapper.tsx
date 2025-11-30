@@ -1,12 +1,13 @@
-'use client'
+import { cookies } from "next/headers";
+import Navbar from "./Navbar";
 
-import { usePathname } from 'next/navigation'
-import Navbar from './Navbar'
+export default async function NavbarWrapper() {
+  const cookieStore = await cookies()
+  if(cookieStore){
+    const role = cookieStore.get("role")?.value;
+  
+    return <Navbar role={role} />;
 
-export default function NavbarWrapper() {
-  const pathname = usePathname()
-
-  if (pathname === "/" || pathname === "/register") return null
-
-  return <Navbar />
+  }
+  return <></>
 }

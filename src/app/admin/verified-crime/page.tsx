@@ -3,20 +3,18 @@
 import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
-import { Icon } from "leaflet";
 import GeneratePopUpContent from "@/components/Map/GeneratePopUpContent";
 import { Crime } from "@/Types/crime";
 import Overlay from "@/components/Overlay/Overlay";
+import dynamic from "next/dynamic";
 
-import MapView from "@/components/Map/Map";
+import { userIcon } from "@/components/Map/Map";
 
-
-
-const userIcon = new Icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
+const MapView = dynamic(() => import("@/components/Map/Map"), {
+  ssr: false,
 });
+
+
 
 // 🔹 Enum of crime types
 const CRIME_TYPES = [

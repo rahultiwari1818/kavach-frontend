@@ -7,8 +7,10 @@ import { Icon } from "leaflet";
 import GeneratePopUpContent from "@/components/Map/GeneratePopUpContent";
 import { Crime } from "@/Types/crime";
 
-import MapView from "@/components/Map/Map";
-
+import dynamic from "next/dynamic";
+const MapView = dynamic(() => import("@/components/Map/Map"), {
+  ssr: false,
+});
 
 const userIcon = new Icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",

@@ -14,7 +14,7 @@ const defaultUserIcon = new Icon({
 });
 
 
-export default function MapMarkerLayer({ markers }: Props) {
+ function MapMarkerLayer({ markers }: Props) {
   return (
     <>
       {markers.map((marker) => (
@@ -25,3 +25,7 @@ export default function MapMarkerLayer({ markers }: Props) {
     </>
   );
 }
+
+import dynamic from "next/dynamic";
+
+export default dynamic(() => Promise.resolve(MapMarkerLayer), { ssr: false });
